@@ -7,7 +7,7 @@ import os
 gemini_api_key = os.getenv('GOOGLE_API_KEY2')
 model = ChatGoogleGenerativeAI(
     model = 'gemini-2.5-flash-lite',
-    google_api_key = gemini_api_key,
+    api_key = gemini_api_key,
     temperature = 0.9
 )
 
@@ -67,11 +67,7 @@ if st.button('SUBMIT'):
         * Create tables for description wherever required. 
         * Strictly do not add any new skill in sample resume.
         * The format of sample resume should be in such a way that they can be copied and pasted in Word. 
-        
-        <Style>
-        * Use Markdown only
-        * Do NOT use HTML tags like <br>
-        </Style> '''
+        '''
 
 
         response = model.invoke(prompt)
