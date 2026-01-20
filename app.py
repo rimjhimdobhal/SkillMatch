@@ -71,7 +71,13 @@ if st.button('SUBMIT'):
 
 
         response = model.invoke(prompt)
-        st.write(response.content)
+        clean_output = (
+              response.content
+                        .replace("<br>", "\n")
+                        .replace("<br/>", "\n")
+                        .replace("<br />", "\n"))
+
+        st.markdown(clean_output)
 
 
 
