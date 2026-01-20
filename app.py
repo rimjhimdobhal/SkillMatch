@@ -4,7 +4,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 
 # Let's configure the model
-gemini_api_key = os.getenv('GOOGLE_API_KEY1')
+gemini_api_key = os.getenv('GOOGLE_API_KEY2')
 model = ChatGoogleGenerativeAI(
     model = 'gemini-2.5-flash-lite',
     api_key = gemini_api_key,
@@ -52,8 +52,6 @@ if st.button('SUBMIT'):
         * Resume: {file_text}
         * Job Description: {job_desc}
         <Format> The report should follow these steps:
-        * Use Markdown only
-        * Do NOT use HTML tags like <br>
         * Give a bried description of the applicant in 3-5 lines.
         * Describe in percentage what are the chances of this resume getting selected.
         * Need not be the exact percentage, you can give interval of percentage.
@@ -69,7 +67,12 @@ if st.button('SUBMIT'):
         * Create tables for description wherever required. 
         * Strictly do not add any new skill in sample resume.
         * The format of sample resume should be in such a way that they can be copied and pasted in Word. 
-        '''
+        
+        <Style>
+        * Use Markdown only
+        * Do NOT use HTML tags like <br>
+        </Style> '''
+
 
         response = model.invoke(prompt)
         st.write(response.content)
